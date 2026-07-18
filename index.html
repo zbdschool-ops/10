@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title> § 10. Перша допомога при травмах | Тренажер «Навігатор ризиків»</title>
+<title>§ 10. Перша допомога при травмах | Тренажер «Навігатор ризиків»</title>
 <style>
 :root {
 --primary: #1e3a8a;
@@ -314,35 +314,6 @@ left: 0;
 font-size: 16px;
 top: 6px;
 }
-.theory-illustration {
-background: white;
-border: 2px solid var(--border);
-border-radius: 12px;
-padding: 20px;
-margin: 20px 0;
-text-align: center;
-}
-.theory-illustration-title {
-color: var(--primary);
-font-size: 16px;
-font-weight: 700;
-margin-bottom: 16px;
-padding-bottom: 8px;
-border-bottom: 2px solid var(--border);
-}
-.theory-illustration svg {
-max-width: 100%;
-height: auto;
-display: block;
-margin: 0 auto;
-}
-.theory-illustration-caption {
-font-size: 13px;
-color: var(--text-muted);
-font-style: italic;
-margin-top: 12px;
-text-align: center;
-}
 .key-point {
 background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
 border: 2px solid #fbbf24;
@@ -354,6 +325,295 @@ font-weight: 600;
 color: #78350f;
 }
 .key-point::before { content: '💡'; font-size: 20px; }
+
+/* ==================== НОВІ СТИЛІ ДЛЯ КАРТОК ПОРІВНЯННЯ ==================== */
+.comparison-section {
+margin: 24px 0;
+padding: 20px;
+background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+border-radius: 16px;
+border: 2px solid var(--border);
+}
+.comparison-section-title {
+text-align: center;
+color: var(--primary);
+font-size: 18px;
+font-weight: 700;
+margin-bottom: 20px;
+padding-bottom: 12px;
+border-bottom: 2px dashed var(--border);
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+}
+.comparison-grid {
+display: grid;
+gap: 16px;
+}
+.comparison-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.comparison-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.comparison-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+.comparison-card {
+background: white;
+border-radius: 16px;
+padding: 20px;
+position: relative;
+overflow: hidden;
+transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+border: 2px solid transparent;
+cursor: default;
+}
+.comparison-card:hover {
+transform: translateY(-6px) scale(1.02);
+box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+.comparison-card::before {
+content: '';
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 6px;
+background: var(--card-accent, var(--accent));
+}
+.comparison-card-icon {
+font-size: 48px;
+text-align: center;
+margin: 8px 0 12px;
+animation: iconFloat 3s ease-in-out infinite;
+}
+@keyframes iconFloat {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-4px); }
+}
+.comparison-card-title {
+font-size: 16px;
+font-weight: 800;
+text-align: center;
+margin-bottom: 4px;
+color: var(--card-title-color, var(--primary));
+letter-spacing: 0.5px;
+}
+.comparison-card-subtitle {
+font-size: 12px;
+text-align: center;
+color: var(--text-muted);
+margin-bottom: 12px;
+padding-bottom: 10px;
+border-bottom: 1px dashed var(--border);
+font-style: italic;
+}
+.comparison-card-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.comparison-card-list li {
+padding: 6px 0 6px 24px;
+position: relative;
+font-size: 13px;
+line-height: 1.5;
+color: var(--text);
+}
+.comparison-card-list li::before {
+content: attr(data-icon);
+position: absolute;
+left: 0;
+font-size: 14px;
+top: 6px;
+}
+.comparison-card-example {
+margin-top: 12px;
+padding: 10px;
+background: rgba(255, 255, 255, 0.6);
+border-radius: 10px;
+text-align: center;
+font-size: 12px;
+font-style: italic;
+color: var(--card-title-color, var(--text-muted));
+border: 1px dashed var(--border);
+}
+.comparison-card-example strong {
+display: block;
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+margin-bottom: 4px;
+opacity: 0.7;
+}
+.comparison-card-step-number {
+position: absolute;
+top: 14px;
+right: 14px;
+width: 32px;
+height: 32px;
+border-radius: 50%;
+background: var(--card-accent, var(--accent));
+color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 800;
+font-size: 14px;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+animation: pulse 2s infinite;
+}
+
+/* Варіанти карток переломів */
+.fracture-closed {
+--card-accent: #3b82f6;
+--card-title-color: #1e40af;
+background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+border-color: #93c5fd;
+}
+.fracture-closed:hover {
+border-color: #3b82f6;
+box-shadow: 0 12px 28px rgba(59, 130, 246, 0.25);
+}
+.fracture-open {
+--card-accent: #ef4444;
+--card-title-color: #991b1b;
+background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+border-color: #fca5a5;
+}
+.fracture-open:hover {
+border-color: #ef4444;
+box-shadow: 0 12px 28px rgba(239, 68, 68, 0.25);
+}
+
+/* Варіанти карток турнікета */
+.tourniquet-step {
+padding-top: 24px;
+}
+.tourniquet-step-1 {
+--card-accent: #ef4444;
+--card-title-color: #991b1b;
+background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+border-color: #fca5a5;
+}
+.tourniquet-step-2 {
+--card-accent: #f59e0b;
+--card-title-color: #92400e;
+background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+border-color: #fcd34d;
+}
+.tourniquet-step-3 {
+--card-accent: #10b981;
+--card-title-color: #065f46;
+background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+border-color: #6ee7b7;
+}
+.tourniquet-step-4 {
+--card-accent: #3b82f6;
+--card-title-color: #1e40af;
+background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+border-color: #93c5fd;
+}
+.tourniquet-step:hover {
+box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+.tourniquet-description {
+text-align: center;
+font-size: 13px;
+color: var(--text);
+line-height: 1.5;
+margin-top: 8px;
+}
+.tourniquet-description strong {
+display: block;
+font-size: 15px;
+margin-bottom: 4px;
+color: var(--card-title-color, var(--primary));
+}
+
+/* Стрілки між картками турнікета */
+.tourniquet-arrow {
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 24px;
+color: var(--text-muted);
+animation: arrowBounce 1.5s ease-in-out infinite;
+}
+@keyframes arrowBounce {
+0%, 100% { transform: translateX(0); }
+50% { transform: translateX(4px); }
+}
+
+/* Варіанти карток опіків */
+.burn-degree {
+text-align: left;
+}
+.burn-degree-1 {
+--card-accent: #f59e0b;
+--card-title-color: #92400e;
+background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+border-color: #fcd34d;
+}
+.burn-degree-1:hover {
+box-shadow: 0 12px 28px rgba(245, 158, 11, 0.25);
+}
+.burn-degree-2 {
+--card-accent: #f97316;
+--card-title-color: #9a3412;
+background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+border-color: #fdba74;
+}
+.burn-degree-2:hover {
+box-shadow: 0 12px 28px rgba(249, 115, 22, 0.25);
+}
+.burn-degree-3 {
+--card-accent: #dc2626;
+--card-title-color: #991b1b;
+background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+border-color: #fca5a5;
+}
+.burn-degree-3:hover {
+box-shadow: 0 12px 28px rgba(220, 38, 38, 0.25);
+}
+.burn-severity-indicator {
+display: flex;
+gap: 4px;
+justify-content: center;
+margin: 8px 0 12px;
+}
+.burn-severity-dot {
+width: 10px;
+height: 10px;
+border-radius: 50%;
+background: var(--border);
+}
+.burn-severity-dot.active {
+background: var(--card-accent, var(--accent));
+box-shadow: 0 0 8px var(--card-accent, var(--accent));
+}
+
+.comparison-caption {
+text-align: center;
+font-size: 13px;
+color: var(--text-muted);
+font-style: italic;
+margin-top: 16px;
+padding-top: 12px;
+border-top: 1px dashed var(--border);
+}
+
+/* Адаптивність для карток */
+@media (max-width: 968px) {
+.comparison-grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
+.comparison-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.tourniquet-arrow { display: none; }
+}
+@media (max-width: 640px) {
+.comparison-grid.cols-2,
+.comparison-grid.cols-3,
+.comparison-grid.cols-4 { grid-template-columns: 1fr; }
+.comparison-card-icon { font-size: 40px; }
+}
+
+/* ==================== КІНЕЦЬ НОВИХ СТИЛІВ ==================== */
+
 .image-container {
 position: relative; text-align: center;
 margin: 24px 0;
@@ -797,7 +1057,7 @@ font-size: 13px;
 💡 <strong>Пам'ятай:</strong> У надзвичайних ситуаціях важливо діяти швидко, спокійно та безпечно!
 </div>
 </main>
-<!-- STEP 1: STARTING TASK -->
+<!-- STEP 1 -->
 <main class="container hidden" id="step1Page">
 <div class="step-header">
 <h2 class="step-title">🎯 Крок 1. Стартове завдання</h2>
@@ -842,7 +1102,7 @@ font-size: 13px;
 </div>
 </section>
 </main>
-<!-- STEP 2: ALGORITHM IN EMERGENCY -->
+<!-- STEP 2 -->
 <main class="container hidden" id="step2Page">
 <div class="step-header">
 <div class="step-header-top">
@@ -926,22 +1186,10 @@ font-size: 13px;
 <div class="drag-target">
 <h4>🔢 Правильний порядок:</h4>
 <div id="s2DropZones1">
-<div class="drop-zone" data-position="1">
-<div class="drop-zone-number">1</div>
-<div class="drop-zone-text">Перетягни сюди</div>
-</div>
-<div class="drop-zone" data-position="2">
-<div class="drop-zone-number">2</div>
-<div class="drop-zone-text">Перетягни сюди</div>
-</div>
-<div class="drop-zone" data-position="3">
-<div class="drop-zone-number">3</div>
-<div class="drop-zone-text">Перетягни сюди</div>
-</div>
-<div class="drop-zone" data-position="4">
-<div class="drop-zone-number">4</div>
-<div class="drop-zone-text">Перетягни сюди</div>
-</div>
+<div class="drop-zone" data-position="1"><div class="drop-zone-number">1</div><div class="drop-zone-text">Перетягни сюди</div></div>
+<div class="drop-zone" data-position="2"><div class="drop-zone-number">2</div><div class="drop-zone-text">Перетягни сюди</div></div>
+<div class="drop-zone" data-position="3"><div class="drop-zone-number">3</div><div class="drop-zone-text">Перетягни сюди</div></div>
+<div class="drop-zone" data-position="4"><div class="drop-zone-number">4</div><div class="drop-zone-text">Перетягни сюди</div></div>
 </div>
 </div>
 </div>
@@ -970,27 +1218,19 @@ font-size: 13px;
 <div class="task-options" id="s2Task2Options">
 <div class="option" data-correct="true" onclick="selectOption(this, 's2Task2Options')" tabindex="0" role="radio">
 <div class="option-radio"></div>
-<div class="option-text">
-<div class="option-label">🚗 Намагатися одразу витягнути пасажира з автомобіля, не оцінивши небезпеку</div>
-</div>
+<div class="option-text"><div class="option-label">🚗 Намагатися одразу витягнути пасажира з автомобіля, не оцінивши небезпеку</div></div>
 </div>
 <div class="option" data-correct="false" onclick="selectOption(this, 's2Task2Options')" tabindex="0" role="radio">
 <div class="option-radio"></div>
-<div class="option-text">
-<div class="option-label">🔍 Спочатку оцінити безпеку місця події</div>
-</div>
+<div class="option-text"><div class="option-label">🔍 Спочатку оцінити безпеку місця події</div></div>
 </div>
 <div class="option" data-correct="false" onclick="selectOption(this, 's2Task2Options')" tabindex="0" role="radio">
 <div class="option-radio"></div>
-<div class="option-text">
-<div class="option-label">📞 Викликати екстрені служби</div>
-</div>
+<div class="option-text"><div class="option-label">📞 Викликати екстрені служби</div></div>
 </div>
 <div class="option" data-correct="false" onclick="selectOption(this, 's2Task2Options')" tabindex="0" role="radio">
 <div class="option-radio"></div>
-<div class="option-text">
-<div class="option-label">⚠️ Переконатися, що рятувальнику нічого не загрожує</div>
-</div>
+<div class="option-text"><div class="option-label">⚠️ Переконатися, що рятувальнику нічого не загрожує</div></div>
 </div>
 </div>
 </div>
@@ -1040,7 +1280,7 @@ font-size: 13px;
 </div>
 </section>
 </main>
-<!-- STEP 3: FRACTURES -->
+<!-- STEP 3: FRACTURES — З НОВИМИ КАРТКАМИ -->
 <main class="container hidden" id="step3Page">
 <div class="step-header">
 <div class="step-header-top">
@@ -1059,24 +1299,49 @@ font-size: 13px;
 <h4>🦴 Перелом — порушення цілісності кістки</h4>
 <p>Переломи бувають <strong>закриті</strong> (шкіра не пошкоджена) та <strong>відкриті</strong> (є рана, видно уламки кісток). Остаточно визначити наявність перелому може лише лікар.</p>
 </div>
-<!-- ІЛЮСТРАЦІЯ: Типи переломів -->
-<div class="theory-illustration">
-<div class="theory-illustration-title">🦴 Порівняння типів переломів</div>
-<svg viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg">
-<rect x="20" y="20" width="420" height="160" fill="#dbeafe" stroke="#3b82f6" stroke-width="2" rx="10"/>
-<text x="230" y="45" text-anchor="middle" font-size="14" font-weight="700" fill="#1e40af">🔒 ЗАКРИТИЙ ПЕРЕЛОМ</text>
-<text x="230" y="80" text-anchor="middle" font-size="12" fill="#1e40af">• Шкіра ціла</text>
-<text x="230" y="105" text-anchor="middle" font-size="12" fill="#1e40af">• Набряк і деформація</text>
-<text x="230" y="130" text-anchor="middle" font-size="12" fill="#1e40af">• Сильний біль</text>
-<text x="230" y="155" text-anchor="middle" font-size="12" fill="#1e40af">• Неможливість рухати кінцівкою</text>
-<rect x="460" y="20" width="420" height="160" fill="#fee2e2" stroke="#ef4444" stroke-width="2" rx="10"/>
-<text x="670" y="45" text-anchor="middle" font-size="14" font-weight="700" fill="#991b1b">🔓 ВІДКРИТИЙ ПЕРЕЛОМ</text>
-<text x="670" y="80" text-anchor="middle" font-size="12" fill="#991b1b">• Рана та кровотеча</text>
-<text x="670" y="105" text-anchor="middle" font-size="12" fill="#991b1b">• Видно уламки кісток</text>
-<text x="670" y="130" text-anchor="middle" font-size="12" fill="#991b1b">• Пошкоджена шкіра</text>
-<text x="670" y="155" text-anchor="middle" font-size="12" fill="#991b1b">• Загроза інфекції</text>
-</svg>
+
+<!-- 🆕 НОВИЙ БЛОК: КАРТКИ ПОРІВНЯННЯ ТИПІВ ПЕРЕЛОМІВ -->
+<div class="comparison-section">
+<div class="comparison-section-title">🦴 Порівняння типів переломів</div>
+<div class="comparison-grid cols-2">
+<!-- Закритий перелом -->
+<div class="comparison-card fracture-closed">
+<div class="comparison-card-icon">🔒</div>
+<div class="comparison-card-title">ЗАКРИТИЙ ПЕРЕЛОМ</div>
+<div class="comparison-card-subtitle">Шкіра залишається цілою</div>
+<ul class="comparison-card-list">
+<li data-icon="✅">Шкіра ціла, без ран</li>
+<li data-icon="🔺">Набряк і деформація кінцівки</li>
+<li data-icon="💢">Сильний біль при русі</li>
+<li data-icon="🚫">Неможливість рухати кінцівкою</li>
+</ul>
+<div class="comparison-card-example">
+<strong>📌 Приклад:</strong>
+Падіння на руку з велосипеда — рука набрякла, болить, але шкіра ціла
 </div>
+</div>
+<!-- Відкритий перелом -->
+<div class="comparison-card fracture-open">
+<div class="comparison-card-icon">🔓</div>
+<div class="comparison-card-title">ВІДКРИТИЙ ПЕРЕЛОМ</div>
+<div class="comparison-card-subtitle">Є рана та пошкодження шкіри</div>
+<ul class="comparison-card-list">
+<li data-icon="🩸">Рана та кровотеча</li>
+<li data-icon="🦴">Видно уламки кісток</li>
+<li data-icon="⚠️">Пошкоджена шкіра</li>
+<li data-icon="🦠">Загроза інфекції</li>
+</ul>
+<div class="comparison-card-example">
+<strong>📌 Приклад:</strong>
+Травма на виробництві — видна рана, кровотеча, кісткові уламки
+</div>
+</div>
+</div>
+<div class="comparison-caption">
+💡 <strong>Важливо:</strong> Остаточно визначити тип перелому може лише лікар!
+</div>
+</div>
+
 <div class="theory-compact" style="background: linear-gradient(135deg, var(--theory-blue) 0%, #bfdbfe 100%); border-color: #93c5fd;">
 <h4>✅ Загальні ознаки перелому:</h4>
 <ul>
@@ -1089,8 +1354,8 @@ font-size: 13px;
 <div class="theory-compact" style="background: linear-gradient(135deg, var(--theory-green) 0%, #bbf7d0 100%); border-color: #86efac;">
 <h4>📋 Алгоритм допомоги при переломі:</h4>
 <ol style="padding-left: 24px; margin: 12px 0;">
-<li style="margin-bottom: 8px;"><strong>📞 Викличте ЕМД</strong></li>
-<li style="margin-bottom: 12px;"><strong>🩹 Якщо є ознаки ВІДКРИТОГО перелому:</strong>
+<li style="margin-bottom: 8px;"><strong> 📞 Викличте ЕМД</strong></li>
+<li style="margin-bottom: 12px;"><strong> 🩹 Якщо є ознаки ВІДКРИТОГО перелому:</strong>
 <ul style="margin-top: 8px; padding-left: 24px;">
 <li style="margin-bottom: 4px;">✂️ розріжте одяг і огляньте рану;</li>
 <li style="margin-bottom: 4px;">🩹 якщо є кровотеча, накладіть пов'язку;</li>
@@ -1103,7 +1368,7 @@ font-size: 13px;
 <li style="margin-bottom: 4px;">🌡️ вкрийте його термопокривалом / ковдрою.</li>
 </ul>
 </li>
-<li style="margin-bottom: 8px;"><strong>🦴 Зафіксуйте кінцівку (іммобілізація)</strong></li>
+<li style="margin-bottom: 8px;"><strong> 🦴 Зафіксуйте кінцівку (іммобілізація)</strong></li>
 <li style="margin-bottom: 8px;"><strong> 🧊 Прикладіть холод до місця травми</strong></li>
 </ol>
 </div>
@@ -1140,7 +1405,6 @@ font-size: 13px;
 <button class="btn btn-primary" onclick="showS3('s3Task1')">Далі: Завдання 1 →</button>
 </div>
 </section>
-<!-- ДОДАНО ЗАВДАННЯ 1 -->
 <section class="card hidden" id="s3Task1">
 <h2>📝 Завдання 1. Визнач тип перелому</h2>
 <div class="feedback feedback-warning mb-24">
@@ -1191,43 +1455,19 @@ font-size: 13px;
 <div class="drag-source">
 <h4>🎯 Дії:</h4>
 <div id="s3DragItems2">
-<div class="drag-item" draggable="true" data-step="3">
-<div class="drag-item-step">?</div>
-<div>Зафіксувати суглоби вище і нижче місця перелому</div>
-</div>
-<div class="drag-item" draggable="true" data-step="1">
-<div class="drag-item-step">?</div>
-<div>Викликати екстрену допомогу</div>
-</div>
-<div class="drag-item" draggable="true" data-step="4">
-<div class="drag-item-step">?</div>
-<div>Прикласти холод до місця травми</div>
-</div>
-<div class="drag-item" draggable="true" data-step="2">
-<div class="drag-item-step">?</div>
-<div>При відкритому переломі — зупинити кровотечу</div>
-</div>
+<div class="drag-item" draggable="true" data-step="3"><div class="drag-item-step">?</div><div>Зафіксувати суглоби вище і нижче місця перелому</div></div>
+<div class="drag-item" draggable="true" data-step="1"><div class="drag-item-step">?</div><div>Викликати екстрену допомогу</div></div>
+<div class="drag-item" draggable="true" data-step="4"><div class="drag-item-step">?</div><div>Прикласти холод до місця травми</div></div>
+<div class="drag-item" draggable="true" data-step="2"><div class="drag-item-step">?</div><div>При відкритому переломі — зупинити кровотечу</div></div>
 </div>
 </div>
 <div class="drag-target">
 <h4>🔢 Правильний порядок:</h4>
 <div id="s3DropZones2">
-<div class="drop-zone" data-position="1">
-<div class="drop-zone-number">1</div>
-<div class="drop-zone-text">Перетягни сюди</div>
-</div>
-<div class="drop-zone" data-position="2">
-<div class="drop-zone-number">2</div>
-<div class="drop-zone-text">Перетягни сюди</div>
-</div>
-<div class="drop-zone" data-position="3">
-<div class="drop-zone-number">3</div>
-<div class="drop-zone-text">Перетягни сюди</div>
-</div>
-<div class="drop-zone" data-position="4">
-<div class="drop-zone-number">4</div>
-<div class="drop-zone-text">Перетягни сюди</div>
-</div>
+<div class="drop-zone" data-position="1"><div class="drop-zone-number">1</div><div class="drop-zone-text">Перетягни сюди</div></div>
+<div class="drop-zone" data-position="2"><div class="drop-zone-number">2</div><div class="drop-zone-text">Перетягни сюди</div></div>
+<div class="drop-zone" data-position="3"><div class="drop-zone-number">3</div><div class="drop-zone-text">Перетягни сюди</div></div>
+<div class="drop-zone" data-position="4"><div class="drop-zone-number">4</div><div class="drop-zone-text">Перетягни сюди</div></div>
 </div>
 </div>
 </div>
@@ -1247,35 +1487,23 @@ font-size: 13px;
 <div class="task-options" id="s3Task3Options">
 <div class="option" data-correct="true" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">🦴 Намагатися вправити кістку самостійно</div>
-</div>
+<div class="option-text"><div class="option-label">🦴 Намагатися вправити кістку самостійно</div></div>
 </div>
 <div class="option" data-correct="true" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">🚶 Змушувати постраждалого ходити</div>
-</div>
+<div class="option-text"><div class="option-label">🚶 Змушувати постраждалого ходити</div></div>
 </div>
 <div class="option" data-correct="false" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">📞 Викликати екстрену допомогу</div>
-<div class="option-explanation">✅ Це правильна дія!</div>
-</div>
+<div class="option-text"><div class="option-label">📞 Викликати екстрену допомогу</div></div>
 </div>
 <div class="option" data-correct="true" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">🔥 Прикладати тепло до місця перелому</div>
-</div>
+<div class="option-text"><div class="option-label">🔥 Прикладати тепло до місця перелому</div></div>
 </div>
 <div class="option" data-correct="false" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">🧊 Прикласти холод</div>
-<div class="option-explanation">✅ Це правильна дія!</div>
-</div>
+<div class="option-text"><div class="option-label">🧊 Прикласти холод</div></div>
 </div>
 </div>
 <div id="s3Task3Feedback" class="feedback" style="display:none;"></div>
@@ -1303,28 +1531,19 @@ font-size: 13px;
 <div class="task-options" id="s3Task4Options">
 <div class="option" data-correct="true" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">📞 Негайно викликати ЕМД</div>
-</div>
+<div class="option-text"><div class="option-label">📞 Негайно викликати ЕМД</div></div>
 </div>
 <div class="option" data-correct="true" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">🎯 Зафіксувати руку в тому положенні, в якому вона є</div>
-</div>
+<div class="option-text"><div class="option-label">🎯 Зафіксувати руку в тому положенні, в якому вона є</div></div>
 </div>
 <div class="option" data-correct="true" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">🧊 Прикласти холод до місця травми</div>
-</div>
+<div class="option-text"><div class="option-label">🧊 Прикласти холод до місця травми</div></div>
 </div>
 <div class="option" data-correct="false" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">🦴 Спробувати виправити положення руки</div>
-<div class="option-explanation">❌ Ніколи не виправляйте положення кінцівки при переломі!</div>
-</div>
+<div class="option-text"><div class="option-label">🦴 Спробувати виправити положення руки</div></div>
 </div>
 </div>
 </div>
@@ -1338,7 +1557,7 @@ font-size: 13px;
 </div>
 </section>
 </main>
-<!-- STEP 4: BLEEDING -->
+<!-- STEP 4: BLEEDING — З НОВИМИ КАРТКАМИ ТУРНІКЕТА -->
 <main class="container hidden" id="step4Page">
 <div class="step-header">
 <div class="step-header-top">
@@ -1372,7 +1591,7 @@ font-size: 13px;
 <ol style="padding-left: 24px; margin: 12px 0;">
 <li style="margin-bottom: 8px;"><strong>🧤 Перед наданням допомоги</strong> за можливості одягніть рукавички</li>
 <li style="margin-bottom: 8px;"><strong>🩹 Накладіть тиснучу пов'язку</strong>, викличте ЕМД або попросіть це зробити інших</li>
-<li style="margin-bottom: 12px;"><strong>🚨 Якщо кровотеча не спинилася:</strong>
+<li style="margin-bottom: 12px;"><strong> 🚨 Якщо кровотеча не спинилася:</strong>
 <ol style="margin-top: 8px; padding-left: 24px;">
 <li style="margin-bottom: 4px;">🎗️ Накладіть <strong>турнікет</strong> на кінцівку на <strong>5–7 см вище рани</strong></li>
 <li style="margin-bottom: 4px;">🔄 Обертайте стрижень турнікета до зупинки кровотечі та зафіксуйте</li>
@@ -1396,50 +1615,67 @@ font-size: 13px;
 <li data-icon="🩹">Обкладіть уламок валиками і зафіксуйте пов'язкою</li>
 </ul>
 </div>
-<!-- ІЛЮСТРАЦІЯ: Алгоритм турнікета -->
-<div class="theory-illustration">
-<div class="theory-illustration-title">🩸 Алгоритм накладання турнікета</div>
-<svg viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg">
+
+<!-- 🆕 НОВИЙ БЛОК: КАРТКИ АЛГОРИТМУ ТУРНІКЕТА -->
+<div class="comparison-section">
+<div class="comparison-section-title">🩸 Алгоритм накладання турнікета</div>
+<div class="comparison-grid cols-4" style="align-items: stretch;">
 <!-- Крок 1 -->
-<circle cx="110" cy="80" r="50" fill="#fee2e2" stroke="#ef4444" stroke-width="3"/>
-<text x="110" y="75" text-anchor="middle" font-size="24" fill="#991b1b">📍</text>
-<text x="110" y="100" text-anchor="middle" font-size="11" font-weight="600" fill="#991b1b">5-7 см</text>
-<text x="110" y="155" text-anchor="middle" font-size="11" fill="#64748b">Вище рани</text>
-<text x="110" y="170" text-anchor="middle" font-size="11" fill="#64748b">(не на суглоб)</text>
-<text x="110" y="200" text-anchor="middle" font-size="12" font-weight="700" fill="#991b1b">КРОК 1</text>
-<!-- Стрілка -->
-<path d="M 170 80 L 220 80" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
-<!-- Крок 2 -->
-<circle cx="290" cy="80" r="50" fill="#fef3c7" stroke="#f59e0b" stroke-width="3"/>
-<text x="290" y="75" text-anchor="middle" font-size="24" fill="#92400e">🔄</text>
-<text x="290" y="100" text-anchor="middle" font-size="11" font-weight="600" fill="#92400e">Затягнути</text>
-<text x="290" y="155" text-anchor="middle" font-size="11" fill="#64748b">До зупинки</text>
-<text x="290" y="170" text-anchor="middle" font-size="11" fill="#64748b">кровотечі</text>
-<text x="290" y="200" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">КРОК 2</text>
-<path d="M 350 80 L 400 80" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
-<!-- Крок 3 -->
-<circle cx="470" cy="80" r="50" fill="#dcfce7" stroke="#22c55e" stroke-width="3"/>
-<text x="470" y="75" text-anchor="middle" font-size="24" fill="#166534">⏰</text>
-<text x="470" y="100" text-anchor="middle" font-size="11" font-weight="600" fill="#166534">Записати</text>
-<text x="470" y="155" text-anchor="middle" font-size="11" fill="#64748b">Час</text>
-<text x="470" y="170" text-anchor="middle" font-size="11" fill="#64748b">накладання</text>
-<text x="470" y="200" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">КРОК 3</text>
-<path d="M 530 80 L 580 80" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
-<!-- Крок 4 -->
-<circle cx="650" cy="80" r="50" fill="#dbeafe" stroke="#3b82f6" stroke-width="3"/>
-<text x="650" y="75" text-anchor="middle" font-size="24" fill="#1e40af">2️</text>
-<text x="650" y="100" text-anchor="middle" font-size="11" font-weight="600" fill="#1e40af">Другий турнікет</text>
-<text x="650" y="155" text-anchor="middle" font-size="11" fill="#64748b">Якщо потрібно</text>
-<text x="650" y="170" text-anchor="middle" font-size="11" fill="#64748b">— застосувати ще один турікет </text>
-<text x="650" y="200" text-anchor="middle" font-size="12" font-weight="700" fill="#1e40af">КРОК 4</text>
-<defs>
-<marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-<path d="M0,0 L0,6 L9,3 z" fill="#94a3b8"/>
-</marker>
-</defs>
-</svg>
-<div class="theory-illustration-caption">📌 Турнікет — це крайній захід при масивній кровотечі!</div>
+<div class="comparison-card tourniquet-step tourniquet-step-1">
+<div class="comparison-card-step-number">1</div>
+<div class="comparison-card-icon">📍</div>
+<div class="comparison-card-title">МІСЦЕ</div>
+<div class="comparison-card-subtitle">Вище рани</div>
+<div class="tourniquet-description">
+<strong>5–7 см вище рани</strong>
+Не на суглоб!
 </div>
+</div>
+<!-- Стрілка -->
+<div class="tourniquet-arrow">➜</div>
+<!-- Крок 2 -->
+<div class="comparison-card tourniquet-step tourniquet-step-2">
+<div class="comparison-card-step-number">2</div>
+<div class="comparison-card-icon">🔄</div>
+<div class="comparison-card-title">ЗАТЯГНУТИ</div>
+<div class="comparison-card-subtitle">До зупинки крові</div>
+<div class="tourniquet-description">
+<strong>Обертай стрижень</strong>
+Поки кровотеча не зупиниться
+</div>
+</div>
+<!-- Стрілка -->
+<div class="tourniquet-arrow">➜</div>
+<!-- Крок 3 -->
+<div class="comparison-card tourniquet-step tourniquet-step-3">
+<div class="comparison-card-step-number">3</div>
+<div class="comparison-card-icon">⏰</div>
+<div class="comparison-card-title">ЧАС</div>
+<div class="comparison-card-subtitle">Зафіксуй</div>
+<div class="tourniquet-description">
+<strong>Запиши час</strong>
+накладання турнікета
+</div>
+</div>
+<!-- Стрілка -->
+<div class="tourniquet-arrow">➜</div>
+<!-- Крок 4 -->
+<div class="comparison-card tourniquet-step tourniquet-step-4">
+<div class="comparison-card-step-number">4</div>
+<div class="comparison-card-icon">🎗️</div>
+<div class="comparison-card-title">КОНТРОЛЬ</div>
+<div class="comparison-card-subtitle">За потреби</div>
+<div class="tourniquet-description">
+<strong>Другий турнікет</strong>
+Якщо кровотеча триває
+</div>
+</div>
+</div>
+<div class="comparison-caption">
+📌 <strong>Пам'ятай:</strong> Турнікет — це крайній захід при масивній кровотечі!
+</div>
+</div>
+
 <div class="key-point">
 ⚠️ <strong>Ніколи не послаблюйте і не знімайте турнікет самостійно!</strong> Це мають зробити медичні працівники. Турнікет може безпечно тиснути на кінцівку до двох годин.
 </div>
@@ -1456,28 +1692,19 @@ font-size: 13px;
 <div class="task-options" id="s4Task1Options">
 <div class="option" data-correct="true" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">🩸 Кров б'є фонтаном з кінцівки</div>
-</div>
+<div class="option-text"><div class="option-label">🩸 Кров б'є фонтаном з кінцівки</div></div>
 </div>
 <div class="option" data-correct="false" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">🩹 Невелика подряпина на пальці</div>
-<div class="option-explanation">❌ Для невеликих ран достатньо пов'язки!</div>
-</div>
+<div class="option-text"><div class="option-label">🩹 Невелика подряпина на пальці</div></div>
 </div>
 <div class="option" data-correct="true" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">👕 Одяг швидко просочується кров'ю</div>
-</div>
+<div class="option-text"><div class="option-label">👕 Одяг швидко просочується кров'ю</div></div>
 </div>
 <div class="option" data-correct="true" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">😵 Постраждалий втрачає свідомість через втрату крові</div>
-</div>
+<div class="option-text"><div class="option-label">😵 Постраждалий втрачає свідомість через втрату крові</div></div>
 </div>
 </div>
 <div id="s4Task1Feedback" class="feedback" style="display:none;"></div>
@@ -1497,43 +1724,19 @@ font-size: 13px;
 <div class="drag-source">
 <h4>📦 Кроки:</h4>
 <div id="s4DragItems2">
-<div class="drag-item" draggable="true" data-step="3">
-<div class="drag-item-step">?</div>
-<div>Затягувати до зупинки кровотечі</div>
-</div>
-<div class="drag-item" draggable="true" data-step="1">
-<div class="drag-item-step">?</div>
-<div>Накласти турнікет на 5-7 см вище рани</div>
-</div>
-<div class="drag-item" draggable="true" data-step="4">
-<div class="drag-item-step">?</div>
-<div>Записати час накладання</div>
-</div>
-<div class="drag-item" draggable="true" data-step="2">
-<div class="drag-item-step">?</div>
-<div>Переконатися, що турнікет накладено на одяг або тканину</div>
-</div>
+<div class="drag-item" draggable="true" data-step="3"><div class="drag-item-step">?</div><div>Затягувати до зупинки кровотечі</div></div>
+<div class="drag-item" draggable="true" data-step="1"><div class="drag-item-step">?</div><div>Накласти турнікет на 5-7 см вище рани</div></div>
+<div class="drag-item" draggable="true" data-step="4"><div class="drag-item-step">?</div><div>Записати час накладання</div></div>
+<div class="drag-item" draggable="true" data-step="2"><div class="drag-item-step">?</div><div>Переконатися, що турнікет накладено на одяг або тканину</div></div>
 </div>
 </div>
 <div class="drag-target">
 <h4>🔢 Правильний порядок:</h4>
 <div id="s4DropZones2">
-<div class="drop-zone" data-position="1">
-<div class="drop-zone-number">1</div>
-<div class="drop-zone-text">Перетягни сюди</div>
-</div>
-<div class="drop-zone" data-position="2">
-<div class="drop-zone-number">2</div>
-<div class="drop-zone-text">Перетягни сюди</div>
-</div>
-<div class="drop-zone" data-position="3">
-<div class="drop-zone-number">3</div>
-<div class="drop-zone-text">Перетягни сюди</div>
-</div>
-<div class="drop-zone" data-position="4">
-<div class="drop-zone-number">4</div>
-<div class="drop-zone-text">Перетягни сюди</div>
-</div>
+<div class="drop-zone" data-position="1"><div class="drop-zone-number">1</div><div class="drop-zone-text">Перетягни сюди</div></div>
+<div class="drop-zone" data-position="2"><div class="drop-zone-number">2</div><div class="drop-zone-text">Перетягни сюди</div></div>
+<div class="drop-zone" data-position="3"><div class="drop-zone-number">3</div><div class="drop-zone-text">Перетягни сюди</div></div>
+<div class="drop-zone" data-position="4"><div class="drop-zone-number">4</div><div class="drop-zone-text">Перетягни сюди</div></div>
 </div>
 </div>
 </div>
@@ -1598,16 +1801,11 @@ font-size: 13px;
 <div class="task-options" id="s4Task4Options">
 <div class="option" data-correct="true" onclick="selectOption(this, 's4Task4Options')" tabindex="0" role="radio">
 <div class="option-radio"></div>
-<div class="option-text">
-<div class="option-label">🩸 Накласти турнікет на 5-7 см вище рани</div>
-</div>
+<div class="option-text"><div class="option-label">🩸 Накласти турнікет на 5-7 см вище рани</div></div>
 </div>
 <div class="option" data-correct="false" onclick="selectOption(this, 's4Task4Options')" tabindex="0" role="radio">
 <div class="option-radio"></div>
-<div class="option-text">
-<div class="option-label">⏰ Послабити пов'язку через 15 хвилин</div>
-<div class="option-explanation">❌ Ніколи не послаблюйте пов'язку при масивній кровотечі!</div>
-</div>
+<div class="option-text"><div class="option-label">⏰ Послабити пов'язку через 15 хвилин</div></div>
 </div>
 </div>
 </div>
@@ -1621,7 +1819,7 @@ font-size: 13px;
 </div>
 </section>
 </main>
-<!-- STEP 5: BURNS - ОНОВЛЕНО -->
+<!-- STEP 5: BURNS — З НОВИМИ КАРТКАМИ СТУПЕНІВ ОПІКІВ -->
 <main class="container hidden" id="step5Page">
 <div class="step-header">
 <div class="step-header-top">
@@ -1642,46 +1840,80 @@ font-size: 13px;
 <h4>🔥 Опік — ушкодження тканин від тепла, електричного струму, хімічних речовин або випромінювання</h4>
 <p>Більшість опіків трапляються вдома — на кухні або у ванній.</p>
 </div>
-<!-- ДОДАНО: Порівняння ступенів опіків -->
-<div class="theory-illustration">
-<div class="theory-illustration-title">🔥 Ступені опіків: порівняння</div>
-<svg viewBox="0 0 900 280" xmlns="http://www.w3.org/2000/svg">
+
+<!-- 🆕 НОВИЙ БЛОК: КАРТКИ СТУПЕНІВ ОПІКІВ -->
+<div class="comparison-section">
+<div class="comparison-section-title">🔥 Ступені опіків: порівняння</div>
+<div class="comparison-grid cols-3">
 <!-- I ступінь -->
-<rect x="20" y="20" width="280" height="240" fill="#fef3c7" stroke="#f59e0b" stroke-width="3" rx="12"/>
-<text x="160" y="50" text-anchor="middle" font-size="16" font-weight="700" fill="#92400e">І СТУПІНЬ</text>
-<text x="160" y="75" text-anchor="middle" font-size="13" font-weight="600" fill="#92400e">(поверхневий)</text>
-<line x1="40" y1="90" x2="280" y2="90" stroke="#f59e0b" stroke-width="1"/>
-<text x="160" y="115" text-anchor="middle" font-size="12" fill="#78350f">• Почервоніння шкіри</text>
-<text x="160" y="140" text-anchor="middle" font-size="12" fill="#78350f">• Набряк</text>
-<text x="160" y="165" text-anchor="middle" font-size="12" fill="#78350f">• Біль</text>
-<text x="160" y="190" text-anchor="middle" font-size="12" fill="#78350f">• Пухирів НЕМАЄ</text>
-<text x="160" y="225" text-anchor="middle" font-size="11" font-style="italic" fill="#92400e">Приклад: сонячний опік</text>
-<text x="160" y="245" text-anchor="middle" font-size="11" font-style="italic" fill="#92400e">або опік окропом</text>
-<!-- II ступінь -->
-<rect x="310" y="20" width="280" height="240" fill="#ffedd5" stroke="#f97316" stroke-width="3" rx="12"/>
-<text x="450" y="50" text-anchor="middle" font-size="16" font-weight="700" fill="#9a3412">ІІ СТУПІНЬ</text>
-<text x="450" y="75" text-anchor="middle" font-size="13" font-weight="600" fill="#9a3412">(часткова глибина)</text>
-<line x1="330" y1="90" x2="570" y2="90" stroke="#f97316" stroke-width="1"/>
-<text x="450" y="115" text-anchor="middle" font-size="12" fill="#7c2d12">• Утворення пухирів</text>
-<text x="450" y="140" text-anchor="middle" font-size="12" fill="#7c2d12">• Набряк</text>
-<text x="450" y="165" text-anchor="middle" font-size="12" fill="#7c2d12">• Сильний біль</text>
-<text x="450" y="190" text-anchor="middle" font-size="12" fill="#7c2d12">• Почервоніння</text>
-<text x="450" y="225" text-anchor="middle" font-size="11" font-style="italic" fill="#9a3412">Приклад: опік полум'ям,</text>
-<text x="450" y="245" text-anchor="middle" font-size="11" font-style="italic" fill="#9a3412">гарячою парою</text>
-<!-- III ступінь -->
-<rect x="600" y="20" width="280" height="240" fill="#fee2e2" stroke="#dc2626" stroke-width="3" rx="12"/>
-<text x="740" y="50" text-anchor="middle" font-size="16" font-weight="700" fill="#991b1b">ІІІ СТУПІНЬ</text>
-<text x="740" y="75" text-anchor="middle" font-size="13" font-weight="600" fill="#991b1b">(повна глибина)</text>
-<line x1="620" y1="90" x2="860" y2="90" stroke="#dc2626" stroke-width="1"/>
-<text x="740" y="115" text-anchor="middle" font-size="12" fill="#7f1d1d">• Темна/обвуглена шкіра</text>
-<text x="740" y="140" text-anchor="middle" font-size="12" fill="#7f1d1d">• Ушкодження всіх шарів</text>
-<text x="740" y="165" text-anchor="middle" font-size="12" fill="#7f1d1d">• Біль може бути відсутній</text>
-<text x="740" y="190" text-anchor="middle" font-size="12" fill="#7f1d1d">• ⚠️ ВИКЛИКАТИ ЕМД!</text>
-<text x="740" y="225" text-anchor="middle" font-size="11" font-style="italic" fill="#991b1b">Приклад: тривалий контакт</text>
-<text x="740" y="245" text-anchor="middle" font-size="11" font-style="italic" fill="#991b1b">з вогнем, електрострум</text>
-</svg>
-<div class="theory-illustration-caption">📌 Одна долоня постраждалого ≈ 1% шкірного покриву</div>
+<div class="comparison-card burn-degree burn-degree-1">
+<div class="comparison-card-icon">☀️</div>
+<div class="comparison-card-title">І СТУПІНЬ</div>
+<div class="comparison-card-subtitle">Поверхневий опік</div>
+<div class="burn-severity-indicator">
+<div class="burn-severity-dot active"></div>
+<div class="burn-severity-dot"></div>
+<div class="burn-severity-dot"></div>
 </div>
+<ul class="comparison-card-list">
+<li data-icon="🔴">Почервоніння шкіри</li>
+<li data-icon="💧">Набряк</li>
+<li data-icon="💢">Біль</li>
+<li data-icon="✅">Пухирів НЕМАЄ</li>
+</ul>
+<div class="comparison-card-example">
+<strong>📌 Приклад:</strong>
+Сонячний опік або легкий опік окропом
+</div>
+</div>
+<!-- II ступінь -->
+<div class="comparison-card burn-degree burn-degree-2">
+<div class="comparison-card-icon">🔥</div>
+<div class="comparison-card-title">ІІ СТУПІНЬ</div>
+<div class="comparison-card-subtitle">Часткова глибина</div>
+<div class="burn-severity-indicator">
+<div class="burn-severity-dot active"></div>
+<div class="burn-severity-dot active"></div>
+<div class="burn-severity-dot"></div>
+</div>
+<ul class="comparison-card-list">
+<li data-icon="💧">Утворення пухирів</li>
+<li data-icon="💧">Набряк</li>
+<li data-icon="💢">Сильний біль</li>
+<li data-icon="🔴">Почервоніння</li>
+</ul>
+<div class="comparison-card-example">
+<strong>📌 Приклад:</strong>
+Опік полум'ям або гарячою парою
+</div>
+</div>
+<!-- III ступінь -->
+<div class="comparison-card burn-degree burn-degree-3">
+<div class="comparison-card-icon">⚠️</div>
+<div class="comparison-card-title">ІІІ СТУПІНЬ</div>
+<div class="comparison-card-subtitle">Повна глибина</div>
+<div class="burn-severity-indicator">
+<div class="burn-severity-dot active"></div>
+<div class="burn-severity-dot active"></div>
+<div class="burn-severity-dot active"></div>
+</div>
+<ul class="comparison-card-list">
+<li data-icon="⚫">Темна/обвуглена шкіра</li>
+<li data-icon="🔥">Ушкодження всіх шарів</li>
+<li data-icon="🤔">Біль може бути відсутній</li>
+<li data-icon="🚨">⚠️ ВИКЛИКАТИ ЕМД!</li>
+</ul>
+<div class="comparison-card-example">
+<strong>📌 Приклад:</strong>
+Тривалий контакт з вогнем, електрострум
+</div>
+</div>
+</div>
+<div class="comparison-caption">
+💡 <strong>Пам'ятай:</strong> Одна долоня постраждалого ≈ 1% шкірного покриву
+</div>
+</div>
+
 <div class="theory-compact" style="background: linear-gradient(135deg, var(--theory-green) 0%, #bbf7d0 100%); border-color: #86efac;">
 <h4>✅ У ПЕРШУ ЧЕРГУ при опіку:</h4>
 <ul>
@@ -1735,29 +1967,19 @@ font-size: 13px;
 <div class="task-options" id="s5Task1Options">
 <div class="option" data-correct="true" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">💧 Тримати руку під прохолодною водою 20 хвилин</div>
-</div>
+<div class="option-text"><div class="option-label">💧 Тримати руку під прохолодною водою 20 хвилин</div></div>
 </div>
 <div class="option" data-correct="true" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">🩹 Накласти стерильну пов'язку після охолодження</div>
-</div>
+<div class="option-text"><div class="option-label">🩹 Накласти стерильну пов'язку після охолодження</div></div>
 </div>
 <div class="option" data-correct="false" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">🧈 Змастити вершковим маслом</div>
-<div class="option-explanation">❌ Ніколи не змащуйте опіки олією чи маслом!</div>
-</div>
+<div class="option-text"><div class="option-label">🧈 Змастити вершковим маслом</div></div>
 </div>
 <div class="option" data-correct="false" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">🧊 Прикласти лід</div>
-<div class="option-explanation">❌ Лід може пошкодити тканини ще більше!</div>
-</div>
+<div class="option-text"><div class="option-label">🧊 Прикласти лід</div></div>
 </div>
 </div>
 </div>
@@ -1827,28 +2049,19 @@ font-size: 13px;
 <div class="task-options" id="s5Task3Options">
 <div class="option" data-correct="true" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">👶 Опік у маленької дитини</div>
-</div>
+<div class="option-text"><div class="option-label">👶 Опік у маленької дитини</div></div>
 </div>
 <div class="option" data-correct="true" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">🔥 Опік обличчя, шиї або статевих органів</div>
-</div>
+<div class="option-text"><div class="option-label">🔥 Опік обличчя, шиї або статевих органів</div></div>
 </div>
 <div class="option" data-correct="true" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">⚡ Опік від електричного струму</div>
-</div>
+<div class="option-text"><div class="option-label">⚡ Опік від електричного струму</div></div>
 </div>
 <div class="option" data-correct="false" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">☕ Невеликий опік І ступеня на руці (менше 5%)</div>
-<div class="option-explanation">❌ Такий опік можна лікувати самостійно.</div>
-</div>
+<div class="option-text"><div class="option-label">☕ Невеликий опік І ступеня на руці (менше 5%)</div></div>
 </div>
 </div>
 <div id="s5Task3Feedback" class="feedback" style="display:none;"></div>
@@ -1896,7 +2109,7 @@ font-size: 13px;
 </div>
 </section>
 </main>
-<!-- STEP 6: COMPLEX SITUATIONS -->
+<!-- STEP 6 -->
 <main class="container hidden" id="step6Page">
 <div class="step-header">
 <div class="step-header-top">
@@ -1921,10 +2134,10 @@ font-size: 13px;
 <div class="theory-compact" style="background: linear-gradient(135deg, var(--theory-blue) 0%, #bfdbfe 100%); border-color: #93c5fd;">
 <h4>🎯 Пріоритети допомоги:</h4>
 <ol style="padding-left: 24px; margin: 12px 0;">
-<li style="margin-bottom: 8px;"><strong></strong> Масивна кровотеча (турнікет)</li>
-<li style="margin-bottom: 8px;"><strong></strong> Зупинка дихання (СЛР)</li>
-<li style="margin-bottom: 8px;"><strong></strong> Переломи (іммобілізація)</li>
-<li style="margin-bottom: 8px;"><strong></strong> Опіки (охолодження)</li>
+<li style="margin-bottom: 8px;"><strong>1.</strong> Масивна кровотеча (турнікет)</li>
+<li style="margin-bottom: 8px;"><strong>2.</strong> Зупинка дихання (СЛР)</li>
+<li style="margin-bottom: 8px;"><strong>3.</strong> Переломи (іммобілізація)</li>
+<li style="margin-bottom: 8px;"><strong>4.</strong> Опіки (охолодження)</li>
 </ol>
 </div>
 <div class="key-point">
@@ -1939,41 +2152,23 @@ font-size: 13px;
 <h2>📝 Завдання 1. Пріоритети допомоги</h2>
 <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 2px solid #fbbf24; border-radius: 12px; padding: 16px; margin-bottom: 24px;">
 <strong style="color: #92400e; font-size: 16px; display: block; margin-bottom: 8px;">📌 Ситуація:</strong>
-<p>Після ДТП постраждалий має: 1) масивну кровотечу з ноги, 2) закритий перелом руки, 3) опік обличчя від подушки безпеки. Перетягни травми у порядку пріоритетності надання допомоги.</p>
+<p>Після ДТП постраждалий має: 1) масивну кровотечу з ноги, 2) закритий перелом руки, 3) опік обличчя від подушки безпеки.</p>
 </div>
 <div class="drag-container">
 <div class="drag-source">
 <h4>🩹 Травми:</h4>
 <div id="s6DragItems1">
-<div class="drag-item" draggable="true" data-priority="3">
-<div class="drag-item-step">?</div>
-<div>Опік обличчя</div>
-</div>
-<div class="drag-item" draggable="true" data-priority="1">
-<div class="drag-item-step">?</div>
-<div>Масивна кровотеча з ноги</div>
-</div>
-<div class="drag-item" draggable="true" data-priority="2">
-<div class="drag-item-step">?</div>
-<div>Закритий перелом руки</div>
-</div>
+<div class="drag-item" draggable="true" data-priority="3"><div class="drag-item-step">?</div><div>Опік обличчя</div></div>
+<div class="drag-item" draggable="true" data-priority="1"><div class="drag-item-step">?</div><div>Масивна кровотеча з ноги</div></div>
+<div class="drag-item" draggable="true" data-priority="2"><div class="drag-item-step">?</div><div>Закритий перелом руки</div></div>
 </div>
 </div>
 <div class="drag-target">
 <h4>🔢 Порядок допомоги:</h4>
 <div id="s6DropZones1">
-<div class="drop-zone" data-position="1">
-<div class="drop-zone-number">1</div>
-<div class="drop-zone-text">Найперше</div>
-</div>
-<div class="drop-zone" data-position="2">
-<div class="drop-zone-number">2</div>
-<div class="drop-zone-text">Друге</div>
-</div>
-<div class="drop-zone" data-position="3">
-<div class="drop-zone-number">3</div>
-<div class="drop-zone-text">Третє</div>
-</div>
+<div class="drop-zone" data-position="1"><div class="drop-zone-number">1</div><div class="drop-zone-text">Найперше</div></div>
+<div class="drop-zone" data-position="2"><div class="drop-zone-number">2</div><div class="drop-zone-text">Друге</div></div>
+<div class="drop-zone" data-position="3"><div class="drop-zone-number">3</div><div class="drop-zone-text">Третє</div></div>
 </div>
 </div>
 </div>
@@ -1994,43 +2189,19 @@ font-size: 13px;
 <div class="drag-source">
 <h4>🎯 Дії:</h4>
 <div id="s6DragItems2">
-<div class="drag-item" draggable="true" data-step="4">
-<div class="drag-item-step">?</div>
-<div>Зафіксувати переломи</div>
-</div>
-<div class="drag-item" draggable="true" data-step="1">
-<div class="drag-item-step">?</div>
-<div>Переконатися у безпеці місця події</div>
-</div>
-<div class="drag-item" draggable="true" data-step="3">
-<div class="drag-item-step">?</div>
-<div>Зупинити кровотечу</div>
-</div>
-<div class="drag-item" draggable="true" data-step="2">
-<div class="drag-item-step">?</div>
-<div>Викликати ЕМД (103)</div>
-</div>
+<div class="drag-item" draggable="true" data-step="4"><div class="drag-item-step">?</div><div>Зафіксувати переломи</div></div>
+<div class="drag-item" draggable="true" data-step="1"><div class="drag-item-step">?</div><div>Переконатися у безпеці місця події</div></div>
+<div class="drag-item" draggable="true" data-step="3"><div class="drag-item-step">?</div><div>Зупинити кровотечу</div></div>
+<div class="drag-item" draggable="true" data-step="2"><div class="drag-item-step">?</div><div>Викликати ЕМД (103)</div></div>
 </div>
 </div>
 <div class="drag-target">
 <h4>🔢 Правильний порядок:</h4>
 <div id="s6DropZones2">
-<div class="drop-zone" data-position="1">
-<div class="drop-zone-number">1</div>
-<div class="drop-zone-text">Перетягни сюди</div>
-</div>
-<div class="drop-zone" data-position="2">
-<div class="drop-zone-number">2</div>
-<div class="drop-zone-text">Перетягни сюди</div>
-</div>
-<div class="drop-zone" data-position="3">
-<div class="drop-zone-number">3</div>
-<div class="drop-zone-text">Перетягни сюди</div>
-</div>
-<div class="drop-zone" data-position="4">
-<div class="drop-zone-number">4</div>
-<div class="drop-zone-text">Перетягни сюди</div>
-</div>
+<div class="drop-zone" data-position="1"><div class="drop-zone-number">1</div><div class="drop-zone-text">Перетягни сюди</div></div>
+<div class="drop-zone" data-position="2"><div class="drop-zone-number">2</div><div class="drop-zone-text">Перетягни сюди</div></div>
+<div class="drop-zone" data-position="3"><div class="drop-zone-number">3</div><div class="drop-zone-text">Перетягни сюди</div></div>
+<div class="drop-zone" data-position="4"><div class="drop-zone-number">4</div><div class="drop-zone-text">Перетягни сюди</div></div>
 </div>
 </div>
 </div>
@@ -2059,28 +2230,19 @@ font-size: 13px;
 <div class="task-options" id="s6Task3Options">
 <div class="option" data-correct="true" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">📞 Викликати ЕМД (103)</div>
-</div>
+<div class="option-text"><div class="option-label">📞 Викликати ЕМД (103)</div></div>
 </div>
 <div class="option" data-correct="true" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">🩸 Зупинити кровотечу з ноги (турнікет)</div>
-</div>
+<div class="option-text"><div class="option-label">🩸 Зупинити кровотечу з ноги (турнікет)</div></div>
 </div>
 <div class="option" data-correct="true" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">🫁 Перевірити дихання та свідомість</div>
-</div>
+<div class="option-text"><div class="option-label">🫁 Перевірити дихання та свідомість</div></div>
 </div>
 <div class="option" data-correct="false" onclick="toggleOption(this)" tabindex="0">
 <div class="option-checkbox"></div>
-<div class="option-text">
-<div class="option-label">💧 Охолоджувати опік на руці</div>
-<div class="option-explanation">❌ Це можна зробити пізніше. Спочатку — життя!</div>
-</div>
+<div class="option-text"><div class="option-label">💧 Охолоджувати опік на руці</div></div>
 </div>
 </div>
 </div>
@@ -2094,7 +2256,7 @@ font-size: 13px;
 </div>
 </section>
 </main>
-<!-- STEP 7: SELF-ASSESSMENT -->
+<!-- STEP 7 -->
 <main class="container hidden" id="step7Page">
 <div class="step6-header">
 <h2>🎉 Вітаємо! Ти завершив(ла) тренажер!</h2>
@@ -2145,22 +2307,10 @@ font-size: 13px;
 </div>
 </div>
 <div class="stats-grid">
-<div class="stat-card">
-<div class="stat-value" id="statTasks">0/21</div>
-<div class="stat-label">✅ Виконано завдань</div>
-</div>
-<div class="stat-card">
-<div class="stat-value" id="statCorrect">0</div>
-<div class="stat-label">🎯 Правильних відповідей</div>
-</div>
-<div class="stat-card">
-<div class="stat-value" id="statSteps">0/6</div>
-<div class="stat-label">📍 Кроків пройдено</div>
-</div>
-<div class="stat-card">
-<div class="stat-value" id="statAccuracy">0%</div>
-<div class="stat-label">🏅 Точність</div>
-</div>
+<div class="stat-card"><div class="stat-value" id="statTasks">0/21</div><div class="stat-label">✅ Виконано завдань</div></div>
+<div class="stat-card"><div class="stat-value" id="statCorrect">0</div><div class="stat-label">🎯 Правильних відповідей</div></div>
+<div class="stat-card"><div class="stat-value" id="statSteps">0/6</div><div class="stat-label">📍 Кроків пройдено</div></div>
+<div class="stat-card"><div class="stat-value" id="statAccuracy">0%</div><div class="stat-label">🏅 Точність</div></div>
 </div>
 <div class="progress-circle-container">
 <div class="progress-circle" id="progressCircle">
@@ -2426,7 +2576,7 @@ renderStepNavigation();
 updateStep6Display();
 }
 function loadProgress() {
-const saved = localStorage.getItem('section10Progress_v4');
+const saved = sessionStorage.getItem('section10Progress_v5');
 if (saved) {
 try {
 const data = JSON.parse(saved);
@@ -2466,7 +2616,7 @@ stepTracker: stepTracker,
 stepsCompleted: stepsCompleted,
 state: state
 };
-sessionStorage.setItem('section10Progress_v4', JSON.stringify(data));
+sessionStorage.setItem('section10Progress_v5', JSON.stringify(data));
 }
 const steps = [
 { id: 1, icon: '🎯', title: 'Стартове завдання', tasks: 1 },
@@ -2876,7 +3026,6 @@ if (allCorrect) {
 feedback.className = 'feedback feedback-success';
 feedback.innerHTML = '<strong>✅ Чудово!</strong> Ти знаєш правила дій у НС.';
 addCorrect('step2_task3');
-showToast('🎉 Крок 2 завершено!');
 } else {
 feedback.className = 'feedback feedback-error';
 feedback.innerHTML = '<strong>❌ Є помилки.</strong> Правильні варіанти виділено зеленим.';
@@ -3654,7 +3803,7 @@ setTimeout(() => { activeStar.style.transform = ''; }, 200);
 }
 function resetProgress() {
 if (confirm('Ти впевнений(а), що хочеш почати спочатку? Весь прогрес буде скинуто.')) {
-sessionStorage.removeItem('section10Progress_v4');
+sessionStorage.removeItem('section10Progress_v5');
 progressTracker.correct = 0;
 progressTracker.total = 0;
 progressTracker.answered = new Set();
