@@ -1008,7 +1008,7 @@ font-size: 13px;
 <div class="toast-container" id="toastContainer"></div>
 <header class="header">
 <div class="header-content">
-<h1 id="headerTitle">🩹 § 10. Перша допомога при травмах</h1>
+<h1 id="headerTitle">🩹 § 10. Перша допомога при травмах цивільного населення</h1>
 <div class="header-buttons">
 <button class="btn btn-secondary" onclick="goToMainPage()">← До змісту</button>
 <button class="btn btn-secondary" onclick="showProgressModal()">📊 Прогрес</button>
@@ -2731,7 +2731,7 @@ if (mainPage) {
 mainPage.classList.remove('hidden');
 mainPage.style.display = 'block';
 }
-document.getElementById('headerTitle').textContent = '🩹 § 10. Перша допомога при травмах';
+document.getElementById('headerTitle').textContent = '🩹 § 10. Перша допомога при травмах цивільного населення';
 state.currentStep = 0;
 saveProgress();
 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2749,7 +2749,7 @@ state.currentStep = 2;
 showS2('s2Theory');
 } else if (stepNumber === 3) {
 document.getElementById('step3Page').classList.remove('hidden');
-document.getElementById('headerTitle').textContent = '🦴 § 10. Перша допомога при травмах цивільного населеннях';
+document.getElementById('headerTitle').textContent = '🦴 § 10. Перша допомога при травмах цивільного населення';
 state.currentStep = 3;
 showS3('s3Theory');
 } else if (stepNumber === 4) {
@@ -3136,11 +3136,11 @@ return;
 }
 if (dragCorrect) {
 feedback.className = 'feedback feedback-success';
-feedback.innerHTML = '<strong>✅ Правильно!</strong>;
+feedback.innerHTML = '<strong>✅ Правильно!</strong> Алгоритм: 1.Викликати ЕМД → 2.Зупинити кровотечу → 3.Зафіксувати → 4.Холод.';
 addCorrect('step3_task2');
 } else {
 feedback.className = 'feedback feedback-error';
-feedback.innerHTML = '<strong>❌ Неправильно. Спробуй ще раз.</strong>';
+feedback.innerHTML = '<strong>❌ Неправильно.</strong> Правильний порядок: 1.Викликати ЕМД, 2.Зупинити кровотечу, 3.Зафіксувати, 4.Холод.';
 }
 }
 function retryS3Task2() {
@@ -3324,11 +3324,11 @@ return;
 }
 if (dragCorrect) {
 feedback.className = 'feedback feedback-success';
-feedback.innerHTML = '<strong>✅ Правильно!</strong>';
+feedback.innerHTML = '<strong>✅ Правильно!</strong> Алгоритм: 1.Накласти → 2.Переконатися → 3.Затягнути → 4.Записати час.';
 addCorrect('step4_task2');
 } else {
 feedback.className = 'feedback feedback-error';
-feedback.innerHTML = '<strong>❌ Неправильно. Спробуй ще раз.</strong>';
+feedback.innerHTML = '<strong>❌ Неправильно.</strong> Правильний порядок: 1.Накласти на 5-7 см вище рани, 2.На одяг/тканину, 3.Затягнути, 4.Записати час.';
 }
 }
 function retryS4Task2() {
@@ -3340,10 +3340,10 @@ delete zone.dataset.step;
 });
 const dragItemsContainer = document.getElementById('s4DragItems2');
 dragItemsContainer.innerHTML = `
-<div class="drag-item" draggable="true" data-step="3"><div class="drag-item-step">?</div><div>Затягувати до зупинки кровотечі</div></div>
+<div class="drag-item" draggable="true" data-step="2"><div class="drag-item-step">?</div><div>Затягувати до зупинки кровотечі</div></div>
 <div class="drag-item" draggable="true" data-step="1"><div class="drag-item-step">?</div><div>Накласти турнікет на 5-7 см вище рани</div></div>
-<div class="drag-item" draggable="true" data-step="4"><div class="drag-item-step">?</div><div>Записати час накладання</div></div>
-<div class="drag-item" draggable="true" data-step="2"><div class="drag-item-step">?</div><div>Переконатися, що турнікет накладено на одяг або тканину</div></div>
+<div class="drag-item" draggable="true" data-step="3"><div class="drag-item-step">?</div><div>Записати час накладання</div></div>
+<div class="drag-item" draggable="true" data-step="4"><div class="drag-item-step">?</div><div>За потреби накладіть другий турнікет</div></div>
 `;
 initS4DragAndDrop2();
 document.getElementById('s4Task2Feedback').style.display = 'none';
@@ -3643,7 +3643,7 @@ feedback.innerHTML = '<strong>✅ Правильно!</strong> Спочатку 
 addCorrect('step6_task1');
 } else {
 feedback.className = 'feedback feedback-error';
-feedback.innerHTML = '<strong>❌ Неправильно. Спробуй ще раз.</strong>';
+feedback.innerHTML = '<strong>❌ Неправильно.</strong> Правильний порядок: 1.Кровотеча (найнебезпечніше), 2.Перелом, 3.Опік.';
 }
 }
 function retryS6Task1() {
@@ -3719,11 +3719,11 @@ return;
 }
 if (dragCorrect) {
 feedback.className = 'feedback feedback-success';
-feedback.innerHTML = '<strong>✅ Правильно!</strong>';
+feedback.innerHTML = '<strong>✅ Правильно!</strong> Алгоритм: 1.Безпека → 2.Виклик ЕМД → 3.Кровотеча → 4.Переломи.';
 addCorrect('step6_task2');
 } else {
 feedback.className = 'feedback feedback-error';
-feedback.innerHTML = '<strong>❌ Неправильно. Спробуй ще раз.</strong>';
+feedback.innerHTML = '<strong>❌ Неправильно.</strong> Спочатку переконайся у безпеці, потім виклич допомогу!';
 }
 }
 function retryS6Task2() {
@@ -3737,8 +3737,8 @@ const dragItemsContainer = document.getElementById('s6DragItems2');
 dragItemsContainer.innerHTML = `
 <div class="drag-item" draggable="true" data-step="4"><div class="drag-item-step">?</div><div>Зафіксувати переломи</div></div>
 <div class="drag-item" draggable="true" data-step="1"><div class="drag-item-step">?</div><div>Переконатися у безпеці місця події</div></div>
-<div class="drag-item" draggable="true" data-step="3"><div class="drag-item-step">?</div><div>Зупинити кровотечу</div></div>
-<div class="drag-item" draggable="true" data-step="2"><div class="drag-item-step">?</div><div>Викликати ЕМД (103)</div></div>
+<div class="drag-item" draggable="true" data-step="2"><div class="drag-item-step">?</div><div>Зупинити кровотечу</div></div>
+<div class="drag-item" draggable="true" data-step="3"><div class="drag-item-step">?</div><div>Викликати ЕМД (112)</div></div>
 `;
 initS6DragAndDrop2();
 document.getElementById('s6Task2Feedback').style.display = 'none';
